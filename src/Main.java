@@ -1,3 +1,8 @@
+import DecoratorPattern.BasePizza.Pizza;
+import DecoratorPattern.BasePizza.PlainPizza;
+import DecoratorPattern.Toppings.Cheese;
+import DecoratorPattern.Toppings.Pepperoni;
+import DecoratorPattern.Toppings.Veggies;
 import ObserverPattern.Observable.IphoneObservable;
 import ObserverPattern.Observable.StockObservable;
 import ObserverPattern.Observer.EmailAlertObserver;
@@ -31,6 +36,24 @@ public class Main {
         iphoneStockOberverable.add(observer3);
 
         iphoneStockOberverable.setStockCount(10);
+        // endregion
+
+        // region Decorator Pattern
+        // Start with a plain pizza
+        Pizza plainPizza = new PlainPizza();
+        System.out.println(plainPizza.getDescription() + " Cost: $" + plainPizza.getCost());
+
+        // Add cheese topping
+        Pizza cheesePizza = new Cheese(plainPizza);
+        System.out.println(cheesePizza.getDescription() + " Cost: $" + cheesePizza.getCost());
+
+        // Add pepperoni topping
+        Pizza pepperoniPizza = new Pepperoni(cheesePizza);
+        System.out.println(pepperoniPizza.getDescription() + " Cost: $" + pepperoniPizza.getCost());
+
+        // Add veggies topping
+        Pizza veggiePizza = new Veggies(pepperoniPizza);
+        System.out.println(veggiePizza.getDescription() + " Cost: $" + veggiePizza.getCost());
         // endregion
 
     }
