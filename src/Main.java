@@ -1,3 +1,8 @@
+import AbstractFactoryDesignPattern.Factory.MacFactory;
+import AbstractFactoryDesignPattern.Factory.WindowsFactory;
+import AbstractFactoryDesignPattern.Interface.Button;
+import AbstractFactoryDesignPattern.Interface.Checkbox;
+import AbstractFactoryDesignPattern.Interface.UIFactory;
 import DecoratorPattern.BasePizza.Pizza;
 import DecoratorPattern.BasePizza.PlainPizza;
 import DecoratorPattern.Toppings.Cheese;
@@ -8,10 +13,6 @@ import ObserverPattern.Observable.StockObservable;
 import ObserverPattern.Observer.EmailAlertObserver;
 import ObserverPattern.Observer.MobileAlertObserver;
 import ObserverPattern.Observer.NotificationAlertObserver;
-import StrategyPattern.Amazon;
-import StrategyPattern.Flipkart;
-import StrategyPattern.PaymentContext;
-import StrategyPattern.SpaceX;
 
 public class Main {
     public static void main(String[] args) {
@@ -55,6 +56,38 @@ public class Main {
         Pizza veggiePizza = new Veggies(pepperoniPizza);
         System.out.println(veggiePizza.getDescription() + " Cost: $" + veggiePizza.getCost());
         // endregion
+
+        // region Factory Pattern
+//        ShapeFactory shapeFactory = new ShapeFactory();
+//        Shape circle = shapeFactory.getShape("circle");
+//        circle.draw();
+//        Shape rectangle = shapeFactory.getShape("rectangle");
+//        rectangle.draw();
+//        Shape square = shapeFactory.getShape("square");
+//        square.draw();
+        // endregion
+
+        // region Abstract Factory Pattern
+        UIFactory factory;
+
+        // Determine platform (hardcoded here, but could be dynamic)
+        String os = "Windows"; // or "MacOS"
+
+        if (os.equalsIgnoreCase("Windows")) {
+            factory = new WindowsFactory();
+        } else {
+            factory = new MacFactory();
+        }
+
+        // Use the factory to create UI components
+        Button button = factory.createButton();
+        Checkbox checkbox = factory.createCheckbox();
+
+        // Use the created components
+        button.render();        // Output: Rendering a Windows Button.
+        checkbox.toggle();      // Output: Rendering a Windows Checkbox.
+        // endregion
+
 
     }
 }
