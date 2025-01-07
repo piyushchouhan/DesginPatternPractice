@@ -1,5 +1,6 @@
 package ObserverPattern.Observable;
 
+
 import ObserverPattern.Observer.NotificationAlertObserver;
 
 public interface StockObservable {
