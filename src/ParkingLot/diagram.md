@@ -113,7 +113,7 @@ classDiagram
         + removeVehicle()
     }
 
-    Vehicle <|-- ParkingSpot
+    Vehicle <-- ParkingSpot
     ParkingSpot <|-- TwoWheelerParkingSpot
     ParkingSpot <|-- FourWheelerParkingSpot
     ParkingSpotManager <|-- TwoWheelerParkingSpotManager

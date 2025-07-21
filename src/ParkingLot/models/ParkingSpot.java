@@ -1,10 +1,10 @@
 package ParkingLot.models;
 
 public class ParkingSpot {
-    private int id;
+    private final int id;
     private boolean isEmpty = true;
     private Vehicle vehicle;
-    private double price;
+    private final double price;
 
     public ParkingSpot(int id, double price) {
         this.id = id;
